@@ -30,10 +30,16 @@ function Projects() {
         />
         <ProjectCard
           src={fitLift}
+          link="https://pizza-menu-ten-pearl.vercel.app/"
+          h3="project-4"
+          p="pizza-menu"
+        />
+{/*         <ProjectCard
+          src={fitLift}
           link="https://mh-plum.vercel.app/"
           h3="project-4"
           p="website"
-        />
+        /> */}
       </div>
     </section>
   );
