@@ -1,0 +1,243 @@
+.container {
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.sectionHeader.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sectionLabel {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  background: linear-gradient(135deg, var(--accent-glow), transparent);
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.sectionDescription {
+  max-width: 500px;
+  margin-top: 20px;
+  opacity: 0.8;
+  line-height: 1.7;
+}
+
+.projectsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.projectCard {
+  background: var(--card-bg);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  transform: translateY(40px);
+  position: relative;
+}
+
+.projectCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.projectCard.visible {
+  animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projectCard:hover {
+  transform: translateY(-12px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-color);
+}
+
+.projectCard:hover::before {
+  opacity: 1;
+}
+
+.projectCard a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.noLink {
+  cursor: default;
+}
+
+.overlayComingSoon {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.comingSoon {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.projectCard:hover .imageWrapper img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 30px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.projectCard:hover .overlay {
+  opacity: 1;
+}
+
+.viewProject {
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.projectCard:hover .viewProject {
+  transform: translateY(0);
+}
+
+.viewProject:hover {
+  background-position: 100% 50%;
+  transform: translateY(0) scale(1.05);
+}
+
+.projectInfo {
+  padding: 28px;
+}
+
+.category {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.projectInfo h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.projectCard:hover .projectInfo h3 {
+  color: var(--accent-color);
+}
+
+.projectInfo p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.75;
+  color: var(--text-color);
+}
+
+@media (min-width: 700px) {
+  .projectsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .projectsContainer {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .container {
+    padding: 120px 40px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 80px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .projectInfo h3 {
+    font-size: 26px;
+  }
+
+  .projectInfo {
+    padding: 32px;
+  }
+}
